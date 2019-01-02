@@ -8,11 +8,12 @@ go:
   - master
 before_install:
   - go get golang.org/x/lint/golint
-  - go get golang.org/x/tools/cmd/cover
-  - go get github.com/mattn/goveralls
+  # - go get golang.org/x/tools/cmd/cover
+  # - go get github.com/mattn/goveralls
 script:
-  - go test -v -covermode=count -coverprofile=coverage.out
+  # - go test -v -covermode=count -coverprofile=coverage.out
+  - go test
   - go vet ./...
   - test -z "$(gofmt -d -s . | tee /dev/stderr)"
   - test -z "$(golint ./... | tee /dev/stderr)"
-  - $HOME/gopath/bin/goveralls  -coverprofile=coverage.out -service=travis-ci
+  # - $HOME/gopath/bin/goveralls  -coverprofile=coverage.out -service=travis-ci
